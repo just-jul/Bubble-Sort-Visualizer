@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="title">Bubble Sort Visualizer</div>
+
+    <div class="input-container">
+        <div class="input">
+
+            <div>
+                <label class="label" for="array-size">Array size: </label>
+                <select class="select" name="array-size" id="array-size">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+
+            <div class="array-values-cont">
+                <div>
+                    <label class="label" for="array-elements">Array values: </label>
+                    <p class="instruction">(separated by comma)</p>
+                </div>
+                <input type="text" id="array-elements" name="array-elements" placeholder="e.g., 1, 2, 3, 4, 5, 6, 7">
+            </div>
+
+        </div>
+        <div class="button-container1">
+            <button class="run-btn">Run</button>
+            <button class="reset-btn">Reset</button>
+        </div>
+    </div>
+
+    <div class="visualizer-container">
+        <div class="alg-container">
+            <div class="bars-container">
+                <div class="bar" style="height: 100px; background-color: #6f5ffa"></div>
+                <div class="bar" style="height: 120px"></div>
+                <div class="bar" style="height: 40px"></div>
+                <div class="bar" style="height: 60px"></div>
+                <div class="bar" style="height: 100px"></div>
+                <div class="bar" style="height: 110px"></div>
+            </div>
+        </div>
+        <div class="steps-container">
+            Starting Bubble Sort
+        </div>
+        <div class="button-container2">
+            <button class="back-btn">
+                <
+            </button>
+            <div>
+                1 / 0
+            </div>
+            <button class="foward-btn">
+                >
+            </button>
+
+        </div>
+    </div>
+
+    <script src="/main.js"></script>
+</body>
+</html>
