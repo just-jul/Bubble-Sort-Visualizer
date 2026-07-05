@@ -1,9 +1,6 @@
 package com.bubblesort.BubbleSort;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,9 +14,9 @@ public class SortController {
         this.sortingService = sortingService;
     }
 
+    @PostMapping("/sort")
     public List<int[]> sort(@RequestBody int[] array) {
         return sortingService.generateSteps(array);
     }
-
 
 }
