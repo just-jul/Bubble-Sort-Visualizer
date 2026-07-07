@@ -145,7 +145,7 @@ forwardBtn.addEventListener("click", ()=> {
     if (currentStep < steps.length - 1 && !waitingForSwap) {
         finished = false;
         const before = steps[currentStep];
-        const after = steps[currentStep];
+        const after = steps[currentStep + 1];
 
         const { compareDescription, highlightIndices } = analyzeTransition(before, after);
         stepsDesc.innerHTML = compareDescription;
@@ -172,21 +172,10 @@ forwardBtn.addEventListener("click", ()=> {
 
 });
 backBtn.addEventListener("click", ()=> {
-    // if (currentStep > 0 && areSwapped) {
-    //     stepsDesc.innerHTML = descriptionArray[0];
-    //     areSwapped = false;
-    //     areCompared = true;
-    // } else if (currentStep > 0 && !areSwapped) {
-    //     currentStep--;
-    //     renderBars(steps[currentStep]);
-    //     areSwapped = true;
-    //     areCompared = false;
-    // }
-
     if (currentStep > 0 && !waitingForSwap) {
         finished = false;
         const before = steps[currentStep];
-        const after = steps[currentStep];
+        const after = steps[currentStep - 1];
 
         const { compareDescription, highlightIndices } = analyzeTransition(before, after);
         stepsDesc.innerHTML = compareDescription;
