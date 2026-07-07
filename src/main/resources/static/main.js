@@ -16,6 +16,9 @@ const backBtn = document.querySelector(".back-btn");
 const bar = document.querySelector(".bar");
 
 const barContainer = document.querySelector(".bars-container");
+const stepsCounter = document.querySelector(".steps-counter");
+
+let currentStepHtml = document.querySelector(".current-step");
 
 const colors = ["#6f5ffa", '#8a7dff', '#5947fc', '#2007fa', '#2a1bb5', '#382f91'];
 
@@ -37,6 +40,9 @@ let areSwapped = true;
 let areCompared = false;
 
 let highlightIndices = [];
+
+// for counting number of steps
+let stepCount = 0;
 
 // get array from input, split turns it into the array type
 function parseInputIntoArray (input){
@@ -76,6 +82,7 @@ runBtn.addEventListener("click", async () => {
     renderBars(numbersArray);
 
     stepsDesc.innerHTML = "Starting Bubble Sort."
+
 
 });
 // rendering bars
@@ -120,10 +127,23 @@ function renderBars(array, highlightIndices = []) {
 function generateColor() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
-
+let finished = false;
+function incrementSteps() {
+    if (!finished) {
+        stepCount++;
+        currentStepHtml.innerHTML = stepCount;
+    }
+}
+function decrementSteps(finished) {
+    if (!finished) {
+        stepCount--;
+        currentStepHtml.innerHTML = stepCount;
+    }
+}
 let waitingForSwap = false;
 forwardBtn.addEventListener("click", ()=> {
     if (currentStep < steps.length - 1 && !waitingForSwap) {
+        finished = false;
         const before = steps[currentStep];
         const after = steps[currentStep];
 
@@ -131,7 +151,9 @@ forwardBtn.addEventListener("click", ()=> {
         stepsDesc.innerHTML = compareDescription;
         renderBars(before, highlightIndices);
         waitingForSwap = true;
+        incrementSteps();
     } else if (currentStep < steps.length - 1 && waitingForSwap) {
+        finished = false;
         const before = steps[currentStep];
         currentStep++;
         const after = steps[currentStep];
@@ -140,9 +162,12 @@ forwardBtn.addEventListener("click", ()=> {
         stepsDesc.innerHTML = swapDescription;
         renderBars(after, highlightIndices);
         waitingForSwap = false;
+        incrementSteps();
     } else {
         stepsDesc.innerHTML = descriptionArray[3];
         renderBars(steps[currentStep]);
+        incrementSteps();
+        finished = true;
     }
 
 });
@@ -159,6 +184,7 @@ backBtn.addEventListener("click", ()=> {
     // }
 
     if (currentStep > 0 && !waitingForSwap) {
+        finished = false;
         const before = steps[currentStep];
         const after = steps[currentStep];
 
@@ -166,7 +192,9 @@ backBtn.addEventListener("click", ()=> {
         stepsDesc.innerHTML = compareDescription;
         renderBars(before, highlightIndices);
         waitingForSwap = true;
+        decrementSteps();
     } else if (currentStep > 0 && waitingForSwap) {
+        finished = false;
         const before = steps[currentStep];
         currentStep--;
         const after = steps[currentStep];
@@ -175,9 +203,13 @@ backBtn.addEventListener("click", ()=> {
         stepsDesc.innerHTML = swapDescription;
         renderBars(after, highlightIndices);
         waitingForSwap = false;
+        decrementSteps();
     } else {
         stepsDesc.innerHTML = "Starting Bubble Sort.";
         renderBars(steps[currentStep]);
+        stepCount = 0;
+        currentStepHtml.innerHTML = stepCount;
+        finished = true;
     }
 });
 

@@ -190,6 +190,9 @@ input {
     color: #3c2fd0;
     margin-top: 8px;
 }
+p {
+    display: inline;
+}
 
 .button-container2 {
     display: flex;
