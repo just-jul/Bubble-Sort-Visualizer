@@ -23,6 +23,7 @@ let currentStepHtml = document.querySelector(".current-step");
 const colors = ["#6f5ffa", '#8a7dff', '#5947fc', '#2007fa', '#2a1bb5', '#382f91'];
 
 let stepsDesc = document.querySelector(".steps-desc");
+let totalSteps = document.querySelector(".total-steps");
 
 let passNumber = 0;
 let currentStep = 0;
@@ -80,6 +81,7 @@ runBtn.addEventListener("click", async () => {
     // generateBars();
 
     renderBars(numbersArray);
+    totalSteps.innerHTML = calculateTotalSteps(steps);
 
     stepsDesc.innerHTML = "Starting Bubble Sort."
 
@@ -100,9 +102,8 @@ function renderBars(array, highlightIndices = []) {
         barDiv.classList.add('bar-column');
         const bar = document.createElement("div");
         bar.classList.add('bar');
-        // bar.style.backgroundColor = generateColor();
         if (highlightIndices.includes(i)) {
-            bar.style.backgroundColor = "#6f5ffa";
+            bar.style.backgroundColor = "#8a7dff";
         } else {
             // bar.style.backgroundColor = "#8a7dff";
             bar.style.backgroundColor = "#4c39f7";
@@ -140,6 +141,10 @@ function decrementSteps(finished) {
         currentStepHtml.innerHTML = stepCount;
     }
 }
+function calculateTotalSteps(steps) {
+    return (steps.length - 1) * 2 + 1;
+}
+
 let waitingForSwap = false;
 forwardBtn.addEventListener("click", ()=> {
     if (currentStep < steps.length - 1 && !waitingForSwap) {
