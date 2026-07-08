@@ -59,11 +59,17 @@ runBtn.addEventListener("click", async () => {
     errorMessage.innerHTML = "";
     // get array from input
     const inputStr = inputField.value;
-    const arraySize = Number(arraySizeField.value);
-    numbersArray = parseInputIntoArray(inputStr);
-    if (numbersArray.length < 3 || numbersArray.length > 12 || numbersArray.length !== arraySize) {
-        errorMessage.innerHTML = "Enter correct number of elements."
-        return;
+
+    if (inputStr === "") {
+        numbersArray = parseInputIntoArray("10, 12, 4, 6, 10, 11");
+        arraySizeField.value = numbersArray.length;
+    } else {
+        const arraySize = Number(arraySizeField.value);
+        numbersArray = parseInputIntoArray(inputStr);
+        if (numbersArray.length < 3 || numbersArray.length > 12 || numbersArray.length !== arraySize) {
+            errorMessage.innerHTML = "Enter correct number of elements."
+            return;
+        }
     }
 
     const response = await fetch("http://localhost:8080/api/sort", { // api/sort is the endpoint specified in controller
