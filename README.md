@@ -2,6 +2,8 @@
 
 An interactive visualization of the Bubble Sort algorithm built with a step-by-step interface that makes it easy to understand how Bubble Sort compares and swaps elements.
 
+![Bubble Sort Visualizer screenshot](docs/Screenshot.png)
+
 ---
 
 ## 📓 Features
