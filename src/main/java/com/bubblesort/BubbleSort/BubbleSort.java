@@ -22,8 +22,8 @@ public class BubbleSort {
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
 
-                    steps.add(arr.clone());
                 }
+                steps.add(arr.clone());
             }
         }
 

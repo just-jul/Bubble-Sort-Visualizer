@@ -84,8 +84,6 @@ runBtn.addEventListener("click", async () => {
     steps = await response.json();
     console.log(steps);
 
-    // generateBars();
-
     renderBars(numbersArray);
     totalSteps.innerHTML = calculateTotalSteps(steps);
 
@@ -111,7 +109,6 @@ function renderBars(array, highlightIndices = []) {
         if (highlightIndices.includes(i)) {
             bar.style.backgroundColor = "#8a7dff";
         } else {
-            // bar.style.backgroundColor = "#8a7dff";
             bar.style.backgroundColor = "#4c39f7";
         }
         if (barValue > 20) {
